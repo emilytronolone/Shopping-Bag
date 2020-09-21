@@ -68,6 +68,7 @@ public class Shopping {
 					break;
 				}
 			}
+			command = scanner.nextLine();
 		}
 		if(bag.getSize()!=0) {
 			System.out.println("**Checking out " + bag.getSize() + " items.");
