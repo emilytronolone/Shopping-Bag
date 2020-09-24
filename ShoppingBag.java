@@ -1,6 +1,9 @@
 /**
-First, a single, very descriptive sentence describing the class.
-Then, a couple more sentences of description to elaborate.
+This class allows for the creation of a new shopping bag which can be added and removed from.
+The class contains the essential methods for ShoppingBag to operate.
+In addition to adding and removing, this class also contains methods for printing and calculating sales tax and sales price.
+Two getter methods are included so other classes can access this class' data members.
+There is a testbed main method to test .add(), .remove(), .grow(), and .salesTax().
 @author Devin Gulati, Emily Tronolone
 */
 
@@ -11,12 +14,22 @@ import java.lang.Math;
 public class ShoppingBag {
 	private GroceryItem[] bag; // array-based implementation of the bag
 	private int size; // number of items currently in the bag
-
+	
+	/**
+	 * Constructor to create a new shopping bag.
+	 * Consists of an array to represent the GroceryItems in the ShoppingBag.
+	 * Includes size which is the number of GroceryItems in the ShoppingBag.
+	 */
 	public ShoppingBag() {
 		this.bag = new GroceryItem[5];
 		this.size = 0;
 	}
 
+	/**
+	 * helper method to find GroceryItem in the bag
+	 * @param item GroceryItem to be found
+	 * @return index of GroceryItem of found, -1 if not found
+	 */
 	private int find(GroceryItem item) {
 		for (int i = 0; i < this.size; i++) {
 			if (item.equals(this.bag[i])) {
@@ -25,7 +38,10 @@ public class ShoppingBag {
 		}
 		return -1;
 	} // helper method to find an item
-
+	
+	/**
+     * Helper method to increase capacity of bag by 5.
+     */
 	private void grow() {
 		GroceryItem[] newBag = new GroceryItem[this.bag.length + 5];
 		int i = 0;
@@ -35,7 +51,11 @@ public class ShoppingBag {
 		}
 		this.bag = newBag;
 	} // helper method to grow the capacity
-
+	
+	/**
+     * Adds GroceryItem to the bag.
+     * @param item GroceryItem to be added
+     */
 	public void add(GroceryItem item) {
 		if (this.size >= this.bag.length) {
 			grow();
@@ -44,11 +64,16 @@ public class ShoppingBag {
 		this.size++;
 	}
 
+	/**
+     * Removes GroceryItem from the bag.
+     * @param item GroceryItem to be removed
+     * @return true on success, false if item is not in bag
+     */
 	public boolean remove(GroceryItem item) {
 		int i = find(item);
 		if (i > -1) {
 			for (int j = i; j < this.size; j++) {
-				this.bag[j] = this.bag[j + 1];
+				this.bag[j] = this.bag[j + 1]; //update the remainder of the array
 			}
 			this.bag[bag.length - 1] = new GroceryItem();
 			this.size--;
@@ -57,6 +82,10 @@ public class ShoppingBag {
 		return false;
 	}
 
+	/**
+     * Calculates total price of items in bag before tax is applied.
+     * @return total price of items in bag before tax is applied
+     */
 	public double salesPrice() {
 		double sumOfItems = 0;
 		for (int i = 0; i < this.size; i++) {
@@ -66,6 +95,10 @@ public class ShoppingBag {
 		return sumOfItems;
 	} // sales total; the sum of the prices in the bag
 
+	/**
+     * Calculates sales tax total of the taxable items in the bag.
+     * @return sales tax total of the taxable items in the bag
+     */
 	public double salesTax() {
 		double totalTax = 0;
 		for (int i = 0; i < this.size; i++) {
@@ -73,10 +106,13 @@ public class ShoppingBag {
 				totalTax += this.bag[i].getPrice() * 0.06625;
 			}
 		}
-		totalTax = (double) Math.round(totalTax * 100) / 100;
+		totalTax = (double) Math.round(totalTax * 100) / 100; // ensures a maximum of 2 decimal places of precision
 		return totalTax;
 	} // sales tax total of the taxable items in the bag
 
+	/**
+     * Prints contents of the bag to the console.
+     */
 	public void print() {
 		if (this.size == 0) {
 			System.out.println("The bag is empty!");
@@ -89,26 +125,39 @@ public class ShoppingBag {
 		}
 	}
 
+	/**
+	 * Getter method to access the size of the bag.
+	 * @return the number of items in the bag
+	 */
 	public int getSize() {
 		return this.size;
 	}
 
+	/**
+	 * Getter method to access the array of items in the bag.
+	 * @return array of all GroceryItems in the bag
+	 */
 	public GroceryItem[] getGroceryItems() {
 		return this.bag;
 	}
 
+	/**
+	 * Testbed main method to test .add(), .remove(), .grow(), and .salesTax().
+	 */
 	public static void main(String[] args) {
 		ShoppingBag bag1 = new ShoppingBag(); // test cases for ShoppingBag constructor
 		ShoppingBag bag2 = new ShoppingBag();
 
-		GroceryItem toast = new GroceryItem("toast", 4.99, true); // test cases for parameterized GroceryItem constructor
+		GroceryItem toast = new GroceryItem("toast", 4.99, true); // test cases for parameterized GroceryItem
+																	// constructor
 		GroceryItem jam = new GroceryItem("jam", 1.89, false);
 		GroceryItem eggs = new GroceryItem("eggs", 0.99, true);
 		GroceryItem butter = new GroceryItem("butter", 0.50, true);
 		GroceryItem cheese = new GroceryItem("cheese", 3.49, true);
 		GroceryItem turkey = new GroceryItem("turkey", 5.89, false);
 
-		bag1.add(toast); // test cases for the parameterized add(GroceryItem item) method and grow() method
+		bag1.add(toast); // test cases for the parameterized add(GroceryItem item) method and grow()
+							// method
 		bag1.add(jam);
 		bag1.add(eggs);
 		bag1.add(butter);
