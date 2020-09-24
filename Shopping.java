@@ -89,7 +89,11 @@ public class Shopping {
 			command = scanner.nextLine(); // iterates through the console input
 		}
 		if (bag.getSize() != 0) { // checks if bag must be checked out before quitting
-			System.out.println("**Checking out " + bag.getSize() + " items.");
+			if (bag.getSize() == 1) {
+				System.out.println("**Checking out " + bag.getSize() + " item.");
+			} else {
+				System.out.println("**Checking out " + bag.getSize() + " items.");
+			}
 			for (int i = 0; i < bag.getSize(); i++) {
 				System.out.println("•" + bag.getGroceryItems()[i].toString());
 			}
