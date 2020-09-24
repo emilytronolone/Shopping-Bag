@@ -71,6 +71,7 @@ public class ShoppingBag {
      */
 	public boolean remove(GroceryItem item) {
 		int i = find(item);
+		System.out.println(i);
 		if (i > -1) {
 			for (int j = i; j < this.size; j++) {
 				this.bag[j] = this.bag[j + 1]; //update the remainder of the array

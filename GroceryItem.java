@@ -1,10 +1,12 @@
 /**
-First, a single, very descriptive sentence describing the class.
-Then, a couple more sentences of description to elaborate.
+This class represents GroceryItems that can be added to a ShoppingBag.
+There are two constructors, one is empty and one is parameterized.
+There are also two getter methods so other classes can access its data members.
 @author Devin Gulati, Emily Tronolone
 */
 
 package project1;
+import java.text.NumberFormat;
 
 public class GroceryItem {
 	private String name;
@@ -48,10 +50,11 @@ public class GroceryItem {
      * @return the values of price, name, and taxable as a combined String
      */
 	public String toString() {
+		NumberFormat formatter = NumberFormat.getCurrencyInstance();
 		if (this.taxable) {
-			return this.name + ": $" + this.price + " : is taxable";
+			return this.name + ": " + formatter.format(this.price) + " : is taxable";
 		} else {
-			return this.name + ": $" + this.price + " : tax free";
+			return this.name + ": " + formatter.format(this.price) + " : tax free";
 		}
 	}
 	
