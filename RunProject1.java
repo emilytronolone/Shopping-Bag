@@ -1,3 +1,9 @@
+/**
+This RunProject1 class is intended to run the entirety of the program.
+By having the main method in this class, we are able to also utilize the Shopping, ShoppingBag, and GroceryItem classes.
+@author Devin Gulati, Emily Tronolone
+*/
+
 package project1;
 
 public class RunProject1 {

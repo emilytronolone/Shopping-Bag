@@ -1,3 +1,9 @@
+/**
+First, a single, very descriptive sentence describing the class.
+Then, a couple more sentences of description to elaborate.
+@author Devin Gulati, Emily Tronolone
+*/
+
 package project1;
 
 public class GroceryItem {

@@ -1,3 +1,9 @@
+/**
+This class has one method to implement the interface for the entirety of the program.
+Shopping incorporates methods from both the ShoppingBag and GroceryItem classes.
+@author Devin Gulati, Emily Tronolone
+*/
+
 package project1;
 
 import java.util.Scanner;
