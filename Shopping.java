@@ -9,16 +9,20 @@ package project1;
 import java.util.Scanner;
 
 public class Shopping {
+	
+	/**
+	 * Method used to read user input and utilize the methods from ShoppingBag and GroceryItem as necessary.
+	 */
 	public void run() {
 		ShoppingBag bag = new ShoppingBag();
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in); // initializes scanner to read from console
 		System.out.println("Let's start shopping!");
 		String command = scanner.nextLine();
-		while(!command.equals("Q")) {
-			String[] tokens = command.split(" ");
-			switch(tokens[0]) {
+		while(!command.equals("Q")) { // allow user to enter commands until they quit
+			String[] tokens = command.split(" "); // splits each line of input into an array of Strings split by a space character
+			switch(tokens[0]) { // accounts for valid commands, except Q
 				case "A":{
-					try {
+					try { // handles malformed commands
 						bag.add(new GroceryItem(tokens[1], Double.parseDouble(tokens[2]), Boolean.parseBoolean(tokens[3])));
 						System.out.println(tokens[1] + " added to the bag.");
 						break;
@@ -74,9 +78,9 @@ public class Shopping {
 					break;
 				}
 			}
-			command = scanner.nextLine();
+			command = scanner.nextLine(); // iterates through the console input
 		}
-		if(bag.getSize()!=0) {
+		if(bag.getSize()!=0) { // checks if bag must be checked out before quitting
 			System.out.println("**Checking out " + bag.getSize() + " items.");
 			for(int i = 0; i < bag.getSize(); i++) {
 				System.out.println("•"+ bag.getGroceryItems()[i].toString());
