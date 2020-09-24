@@ -140,9 +140,10 @@ public class ShoppingBag {
 	public GroceryItem[] getGroceryItems() {
 		return this.bag;
 	}
-
+	
 	/**
 	 * Testbed main method to test .add(), .remove(), .grow(), and .salesTax().
+	 * @param args from the command line
 	 */
 	public static void main(String[] args) {
 		ShoppingBag bag1 = new ShoppingBag(); // test cases for ShoppingBag constructor
