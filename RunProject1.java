@@ -7,8 +7,8 @@ By having the main method in this class, we are able to also utilize the Shoppin
 package project1;
 
 /**
- * Main method used to run the entire program and utilize the other three classes.
- * @param args from the command line
+ * Main method used to run the entire program and utilize the other three
+ * classes.
  */
 public class RunProject1 {
 	public static void main(String[] args) {
